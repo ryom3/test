@@ -20,7 +20,7 @@ jobs:
 
       - name: 'Download and Display the Flag'
         run: |
-          az storage container list --account-nam iamazurelab3dc5d4de3
+          az storage container list --account-name iamazurelab3dc5d4de3
           az storage blob list --account-name iamazurelab3dc5d4de3 --container-name flag
           az storage blob download --account-name iamazurelab3dc5d4de3 --container-name flag --name flag.txt  --file "./flag.txt"
           
