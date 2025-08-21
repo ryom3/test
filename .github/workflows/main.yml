@@ -21,8 +21,8 @@ jobs:
       - name: 'Download and Display the Flag'
         run: |
           az storage container list --account-name iamazurelab3dc5d4de3 --auth-mode login
-          az storage blob list --account-name iamazurelab3dc5d4de3 --container-name flag --auth-mode key
-          az storage blob download --account-name iamazurelab3dc5d4de3 --container-name flag --name flag.txt  --file "./flag.txt"
+          az storage blob list --account-name iamazurelab3dc5d4de3 --container-name flag --auth-mode login
+          az storage blob download --account-name iamazurelab3dc5d4de3 --container-name flag --name flag.txt  --file "./flag.txt" --auth-mode login
           
       
           echo "--- FLAG FOUND ---"
