@@ -1,4 +1,3 @@
-
 name: Azure
 
 on:
@@ -12,11 +11,8 @@ jobs:
   find-flag:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: 'Az CLI Login using OIDC'
-        uses: azure/login@v1
+      - uses: actions/checkout@v3
+      - uses: azure/login@v2
         with:
           client-id: db9630be-2b6d-47d2-94be-070c567a0599
           tenant-id: fdd066e1-ee37-49bc-b08f-d0e152119b04
