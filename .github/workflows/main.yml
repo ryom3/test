@@ -1,1 +1,36 @@
 
+name: Azure
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  find-flag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 'Az CLI Login using OIDC'
+        uses: azure/login@v1
+        with:
+          client-id: db9630be-2b6d-47d2-94be-070c567a0599
+          tenant-id: fdd066e1-ee37-49bc-b08f-d0e152119b04
+          subscription-id: 57965e50-018b-4f5e-9b9b-08accfa673bd
+
+      - name: 'Download and Display the Flag'
+        run: |
+          az storage container list --name iamazurelab3dc5d4de3
+          az storage blob list --account-name iamazurelab3dc5d4de3 --container-name flag
+          az storage blob download --account-name iamazurelab3dc5d4de3 --container-name flag --name flag.txt  --file "./flag.txt"
+          
+      
+          echo "--- FLAG FOUND ---"
+          cat flag.txt
+          echo "------------------"
+        # 上記の <YOUR_STORAGE_ACCOUNT_NAME> は、先ほど作成したストレージアカウント名に書き換えてください。
+        # 例: ctfstorage12ab
